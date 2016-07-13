@@ -18,32 +18,37 @@ import java.util.Map;
 
 public class Main {
 
-	private static final String OUTPUT_PATH = "/home/andrezarmq/Downloads/outputIndex.txt";
-	private static final String INPUT_PATH = "/home/andrezarmq/Downloads/ptwiki-v2.trec";
+	private static final String OUTPUT_PATH = "data/outputIndex.txt";
+	private static final String INPUT_PATH = "data/ptwiki-v2.trec";
 	private static Map<String, List<Integer>> mapWords = new HashMap<String, List<Integer>>();
 
 	public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException {
 
 		File fXmlFile = new File(INPUT_PATH);
+		
+		// Biblioteca para ler xml
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 		Document document = dBuilder.parse(fXmlFile);
 
 		document.getDocumentElement().normalize();
-
+		
+		// recuperando todos os elementos dentro da tag DOC
 		NodeList docs = document.getElementsByTagName("DOC");
 
 		Integer documentId = new Integer(0);
 
+		// percorrendo todos os elementos
 		for (int i = 0; i < docs.getLength(); i++) {
-
+			
 			Node node = docs.item(i);
 
 			if (node.getNodeType() == Node.ELEMENT_NODE) {
 				Element eElement = (Element) node;
 
 				documentId++;
-
+				
+				// Recuperando o conteudo dentro da tag P
 				String paragraph = eElement.getElementsByTagName("P").item(0).getTextContent();
 				paragraph = clean(paragraph);
 
@@ -51,6 +56,7 @@ public class Main {
 
 				for (int indexWord = 0; indexWord < words.length; indexWord++) {
 					if (!words[indexWord].isEmpty()) {
+						// inserindo cada palavra do paragrafo no mapa
 						insertIntoMap(words[indexWord], documentId);
 					}
 				}
@@ -58,59 +64,42 @@ public class Main {
 			}
 		}
 
+		// escrevendo o mapa no arquivo
 		PrintWriter writer = new PrintWriter(OUTPUT_PATH, "UTF-8");
 		writer.print(mapWords.toString());
 		writer.close();
-
-		System.out.println("======================================================");
-
-		// List<Integer> a = new ArrayList<>();
-		// List<Integer> b = new ArrayList<>();
-		// a.add(1);
-		// a.add(2);
-		// a.add(3);
-		// a.add(4);
-		// a.add(5);
-		//
-		// b.add(1);
-		// b.add(2);
-		// b.add(5);
-		// b.add(6);
-		// b.add(7);
-		// b.add(10);
-		// b.add(11);
-		//
-		// System.out.println(union(a, b));
-		// System.out.println(intersect(b, a));
 
 		searchAnd("nomes", "bíblicos");
 		searchOr("nomes", "bíblicos");
 		searchAnd("estados", "unidos");
 		searchOr("estados", "unidos");
 		searchAnd("winston", "churchill");
-		searchOr("winston", "churchill");
+		searchOr("Winston", "Churchill");
 
 	}
 
-	private static void searchOr(String par1, String par2) {
-		List<Integer> list1 = mapWords.get(par1);
-		List<Integer> list2 = mapWords.get(par2);
+	private static void searchOr(String word1, String word2) {
+		word1 = word1.toLowerCase();
+		word2 = word2.toLowerCase();
+		List<Integer> list1 = mapWords.get(word1);
+		List<Integer> list2 = mapWords.get(word2);
 
 		List<Integer> result = union(list1, list2);
-		System.out.println("The result of union between " + par1 + " and " + par2 + " is " + result);
+		System.out.println(word1 + " OR " + word2 + " is in " + result);
 	}
 
-	private static void searchAnd(String par1, String par2) {
-		List<Integer> list1 = mapWords.get(par1);
-		List<Integer> list2 = mapWords.get(par2);
+	private static void searchAnd(String word1, String word2) {
+		word1 = word1.toLowerCase();
+		word2 = word2.toLowerCase();
+		List<Integer> list1 = mapWords.get(word1);
+		List<Integer> list2 = mapWords.get(word2);
 
 		List<Integer> result = intersect(list1, list2);
 
-		System.out.println("The result of intersect between " + par1 + " and " + par2 + " is " + result);
+		System.out.println(word1 + " AND " + word2 + " is in " + result);
 	}
 
 	private static String clean(String str) {
-		String aux;
 		str = str.toLowerCase();
 		str = str.replaceAll("&.{2,4};", " ");
 		str = str.replaceAll("\\{\\{!\\}\\}", " ");
