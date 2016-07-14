@@ -12,6 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -63,6 +64,7 @@ public class Main {
 
 			}
 		}
+		
 
 		// escrevendo o mapa no arquivo
 		PrintWriter writer = new PrintWriter(OUTPUT_PATH, "UTF-8");
@@ -85,6 +87,7 @@ public class Main {
 		List<Integer> list2 = mapWords.get(word2);
 
 		List<Integer> result = union(list1, list2);
+		Collections.sort(result);
 		System.out.println(word1 + " OR " + word2 + " is in " + result);
 	}
 
@@ -103,7 +106,7 @@ public class Main {
 		str = str.toLowerCase();
 		str = str.replaceAll("&.{2,4};", " ");
 		str = str.replaceAll("\\{\\{!\\}\\}", " ");
-		str = str.replace("{{.*?}}", "");
+		str = str.replaceAll("\\{\\{.*?\\}\\}", "");
 		str = str.replaceAll("[^a-z0-9çáéíóúàãõâêô-]", " ");
 
 		return (str);
