@@ -1,0 +1,28 @@
+Consulta: primeira guerra mundial
+Top1: 2
+Top2: 3
+Top3: 7
+Top4: 8
+Top5: 9
+============================
+Consulta: espaço e tempo
+Top1: 1
+Top2: 2
+Top3: 3
+Top4: 4
+Top5: 5
+============================
+Consulta: minha terra tem palmeiras onde canta o sabiá
+Top1: 145
+Top2: 494
+Top3: 472
+Top4: 658
+Top5: 702
+============================
+Consulta: grupo raça negra
+Top1: 2
+Top2: 7
+Top3: 8
+Top4: 528
+Top5: 30
+============================
