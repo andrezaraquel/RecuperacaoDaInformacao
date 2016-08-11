@@ -16,9 +16,9 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class Input {
+public class Util {
 
-	public void geraDocs(String inputPath, String folderDestinationPath) throws ParserConfigurationException, SAXException, IOException {
+	public static void geraDocs(String inputPath, String folderDestinationPath) throws ParserConfigurationException, SAXException, IOException {
 		File fXmlFile = new File(inputPath);
 
 		// Biblioteca para ler xml
@@ -79,5 +79,28 @@ public class Input {
 		str = str.replaceAll("  ", " ");
 
 		return (str);
+	}
+	
+	public static double precision(double numRelevantRetrieved, double numIrrelevantRetrieved) {
+		double denominator = numRelevantRetrieved + numIrrelevantRetrieved;
+		if (denominator != 0.0) {
+			return numRelevantRetrieved / denominator;
+		}
+		return 0;
+	}
+
+	public static double recall(double numRelevantRetrieved, double numRelevant) {
+		if (numRelevant != 0.0) {
+			return numRelevantRetrieved / numRelevant;
+		}
+		return 0;
+	}
+
+	public static double f_measure(double precision, double recall) {
+		double denominator = precision + recall;
+		if (denominator != 0.0) {
+			return (2*precision*recall) / denominator;
+		}
+		return 0;
 	}
 }

@@ -8,19 +8,18 @@ import org.xml.sax.SAXException;
 
 public class Main {
 
-	private static final String CAMINHO_PASTA = "C:/Users/Andreza/Desktop/DOCS_RI/";
+	private static final String CAMINHO_PASTA = "/home/andrezarmq/Área de Trabalho/DOCRI/";
 	private static final String INPUT_PATH = "data/ptwiki-v2.trec";
-	private static final int QUANTIDADE_ELEMENTOS = 10;
-	private static String consulta = "sistema operacional";
+	private static final int QUANTIDADE_ELEMENTOS = 2;
+	private static String consulta = "gênero musical";
 
 	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
 
-		Input input = new Input();
-		input.geraDocs(INPUT_PATH, CAMINHO_PASTA);
-				
+		Util.geraDocs(INPUT_PATH, CAMINHO_PASTA);
+
 		try {
 			Lucene lucene = new Lucene();
-			lucene.lerDocs(CAMINHO_PASTA);			
+			lucene.lerDocs(CAMINHO_PASTA);
 			lucene.luceneBusca(consulta, QUANTIDADE_ELEMENTOS);
 
 		} catch (IOException e) {
@@ -28,8 +27,21 @@ public class Main {
 			e.printStackTrace();
 
 		} catch (ParseException e) {
-			System.err.println("Busca inv�lida!");
+			System.err.println("Busca inválida!");
 			e.printStackTrace();
 		}
+		
+//		double relevantRetrieved = 6;
+//		double irrelevantRetrieved = 4;
+//		double relevant = 10;
+//		
+//		double precision = Util.precision(relevantRetrieved, irrelevantRetrieved);
+//		double recall =  Util.recall(relevantRetrieved, relevant);
+//		
+//		System.out.println("Precision: "+ precision);
+//		System.out.println("Recall: "+ recall);
+//		System.out.println("F-Measure"+ Util.f_measure(precision, recall));
+		
 	}
+	
 }
