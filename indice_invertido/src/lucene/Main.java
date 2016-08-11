@@ -3,11 +3,8 @@ package lucene;
 import java.io.IOException;
 
 import javax.xml.parsers.ParserConfigurationException;
-
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.xml.sax.SAXException;
-
-import indice_invertido.Input;
 
 public class Main {
 
@@ -17,9 +14,9 @@ public class Main {
 	private static String consulta = "sistema operacional";
 
 	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
-//
-//		Input input = new Input();
-//		input.geraDocs(INPUT_PATH, CAMINHO_PASTA);
+
+		Input input = new Input();
+		input.geraDocs(INPUT_PATH, CAMINHO_PASTA);
 				
 		try {
 			Lucene lucene = new Lucene();
