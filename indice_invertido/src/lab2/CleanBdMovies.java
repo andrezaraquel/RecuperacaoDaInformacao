@@ -44,12 +44,21 @@ public class CleanBdMovies {
 			row = br.readLine();
 			row = br.readLine();
 			while (row != null) {
+				if (row.equals("9999")) {
+					break;
+				}
 				if (row.equals("")) {
-					row = br.readLine();	
-					row = br.readLine();	
+					row = br.readLine();
+					row = br.readLine();
 				} else if (row.contains("-->") || row.contains("</font>")) {
 					row = br.readLine();	
 				} else {
+					if (row.contains("<i>")) {
+						row = row.replace("<i>", "");
+					}
+					if (row.contains("</i>")) {
+						row = row.replace("</i>", "");
+					}
 					writer.println(row);
 					row = br.readLine();
 				}				
