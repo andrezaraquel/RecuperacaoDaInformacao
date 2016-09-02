@@ -12,10 +12,10 @@ import java.util.List;
 
 public class CleanBdMovies {
 
-	private final static String OUTPUT_DIR = "C:/Users/Andreza/Desktop/output_movies/";
-	private final static String INPUT_DIR = "C:/Users/Andreza/Desktop/movies";
+	private final static String OUTPUT_DIR = "C:/Users/Andreza/Documents/RI/OUTPUT/";
+	private final static String INPUT_DIR = "C:/Users/Andreza/Documents/RI/INPUT";
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws FileNotFoundException {
 		File folder = new File(INPUT_DIR);
 		List<File> movies = listFilesForFolder(folder);
 		for (File file: movies) {
@@ -25,17 +25,9 @@ public class CleanBdMovies {
 
 	}
 
-	public static void cleanFile(File file) {
-		PrintWriter writer = null;
-		try {
-			writer = new PrintWriter(OUTPUT_DIR + file.getName(), "UTF-8");
-		} catch (FileNotFoundException e1) {		
-			e1.printStackTrace();
-		} catch (UnsupportedEncodingException e1) {			
-			e1.printStackTrace();
-		}
+	public static void cleanFile(File file) throws FileNotFoundException {
+		PrintWriter writer = new PrintWriter(OUTPUT_DIR + file.getName());
 		
-
 		try {
 			FileReader fileReader = new FileReader(file);
 			BufferedReader br = new BufferedReader(fileReader);
