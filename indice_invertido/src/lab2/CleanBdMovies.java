@@ -18,8 +18,6 @@ public class CleanBdMovies {
 
 	private final static String OUTPUT_DIR = "C:/Users/Andreza/Documents/RI/OUTPUT/";
 	private final static String INPUT_DIR = "C:/Users/Andreza/Documents/RI/INPUT";
-	private final static String TRAIN_DIR = "C:/Users/Andreza/Documents/RI/TRAIN";
-	private final static String TEST_DIR = "C:/Users/Andreza/Documents/RI/TEST";
 	private final static double PERCENTAGE = 0.7;
 
 	public static void main(String[] args) throws IOException {
@@ -29,52 +27,8 @@ public class CleanBdMovies {
 			cleanFile(file);
 		}
 
-		splitSets();
-
 		System.out.println("FINISHED!");
 
-	}
-
-	private static void splitSets() throws IOException {
-		File outputDir = new File(OUTPUT_DIR);
-		File trainDir = new File(TRAIN_DIR);
-		File testDir = new File(TEST_DIR);
-
-		if (!trainDir.exists()) {
-			trainDir.mkdir();
-		}
-		if (!testDir.exists()) {
-			testDir.mkdir();
-		}
-
-		int lenTrainSet = (int) (outputDir.listFiles().length * PERCENTAGE);
-
-		for (int i = 0; i < outputDir.listFiles().length; i++) {
-			File inputFile = outputDir.listFiles()[i];
-			File outputFile = null;
-			
-			if (i <= lenTrainSet) {
-				outputFile = new File(trainDir.getAbsoluteFile() + File.separator + inputFile.getName());
-			} else {
-				outputFile = new File(testDir.getAbsoluteFile() + File.separator + inputFile.getName());
-			}
-
-			InputStream inStream = new FileInputStream(inputFile);
-			OutputStream outStream = new FileOutputStream(outputFile);
-
-			byte[] buffer = new byte[1024];
-
-			int length;
-			// copy the file content in bytes
-			while ((length = inStream.read(buffer)) > 0) {
-
-				outStream.write(buffer, 0, length);
-
-			}
-
-			inStream.close();
-			outStream.close();
-		}
 	}
 
 	public static void cleanFile(File file) throws FileNotFoundException {
@@ -102,6 +56,12 @@ public class CleanBdMovies {
 					}
 					if (row.contains("</i>")) {
 						row = row.replace("</i>", "");
+					}
+					if(row.startsWith("-")) {
+						row = row.replace("-", "");
+					}
+					if (row.contains("\"")) {
+						row.replaceAll("\"", "");
 					}
 					writer.println(row);
 					row = br.readLine();
