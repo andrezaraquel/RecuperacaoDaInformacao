@@ -44,3 +44,4 @@ ncol(tfidf.matrix[1:646,])
 distance_matrix <-  Distance_for_KNN_test(tfidf.matrix[647,], tfidf.matrix[1:646, ])
 
 nearest <- k.nearest.neighbors(1,distance_matrix = distance_matrix, k=5)
+nearest
