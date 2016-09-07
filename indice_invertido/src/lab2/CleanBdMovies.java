@@ -18,7 +18,6 @@ public class CleanBdMovies {
 
 	private final static String OUTPUT_DIR = "C:/Users/Andreza/Documents/RI/OUTPUT/";
 	private final static String INPUT_DIR = "C:/Users/Andreza/Documents/RI/INPUT";
-	private final static double PERCENTAGE = 0.7;
 
 	public static void main(String[] args) throws IOException {
 		File folder = new File(INPUT_DIR);
@@ -60,9 +59,13 @@ public class CleanBdMovies {
 					if(row.startsWith("-")) {
 						row = row.replace("-", "");
 					}
-					if (row.contains("\"")) {
-						row.replaceAll("\"", "");
-					}
+					
+					row = row.replaceAll("\"", "");
+					row = row.replaceAll("\\”", "");
+					row = row.replaceAll("\\“", "");
+					row = row.replaceAll("\\’", "");
+					row = row.replaceAll("\\–", "");
+					
 					writer.println(row);
 					row = br.readLine();
 				}
