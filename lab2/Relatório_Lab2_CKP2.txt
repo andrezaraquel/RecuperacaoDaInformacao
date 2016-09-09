@@ -1,0 +1,31 @@
+Relatório CheckPoint 2
+
+Os filmes de teste, com k = 20, foram classificados da seguinte forma: 
+
+The Bourne Identity    - Drama
+Bruce Almighty         - Drama
+Free Willy             - Drama
+The Godfather          - Drama
+Iron Man               - Comédia Romântica
+Platoon                - Drama
+Puss in Boots          - Drama
+Scarface               - Comédia Romântica
+Pretty Woman           - Drama
+Fast Food Nation       - Drama     
+
+
+Classificação Real (planilha):
+
+The Bourne Identity    - Ação
+Bruce Almighty         - Comédia
+Free Willy             - Drama (Acertou)
+The Godfather          - Crime
+Iron Man               - Aventura
+Platoon                - Ação
+Puss in Boots          - Infantil
+Scarface               - Crime
+Pretty Woman           - Comédia Romântica
+Fast Food Nation       - Documentário
+
+Nota-se que não é uma boa classificação, e talvez a legenda não seja muito significativa para classificar o 
+filme em categorias.
