@@ -3,9 +3,9 @@
 library(tm)
 library(FastKNN)
 
-path = "C:/Users/Andreza/Desktop/output_movies/"
+path = "C:/Users/Andreza/Documents/RI/OUTPUT/"
 # Number of movies that will be shown for the user evaluation
-NUM_MOVIES_TEST = 2
+NUM_MOVIES_TEST = 5
 
 file.names <- dir(path) # Documents from input
 
@@ -29,7 +29,7 @@ for(i in 1:N.movies.liked){
   index = movies.liked[i] # Index of the film that the user likes
   filename <- paste(path, file.names[index], sep="")
   doc <- readChar(filename,file.info(filename)$size)
-  content.docs.liked <- paste(content.docs.liked,doc) 
+  content.docs.liked <- paste(content.docs.liked,doc) # This row joins the contents of all movies that the user liked
 }
 # ========= The variable content.docs.liked has the content of all movies that the user liked =============
 
@@ -38,7 +38,7 @@ doc.list = c() # List of contents from each document
 
 indexlist <- 1
 for(i in 1:length(file.names)){
-  if (!(i %in% movies.liked)) { # Adding to documents just the films that is not in the list movies.liked
+  if (!(i %in% movies.offer)) { # Adding to documents just the films that is not in the list movies.offer
     filename <- paste(path, file.names[i], sep="")
     doc <- readChar(filename,file.info(filename)$size)
     doc.list[indexlist] <- doc
@@ -83,5 +83,9 @@ ncol(matrixTrain)
 distance_matrix <-  Distance_for_KNN_test(matrixTest, matrixTrain)
 
 # More similar movies
-nearest <- k.nearest.neighbors(1,distance_matrix = distance_matrix, k=5)
-nearest
+nearest <- k.nearest.neighbors(1,distance_matrix = distance_matrix, k=10)
+
+for (i in 1:length(nearest)){
+  print(file.names[nearest[i]])
+}
+

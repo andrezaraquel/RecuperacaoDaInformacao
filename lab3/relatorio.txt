@@ -1,0 +1,101 @@
+
+OBS 1: A variável NUM_MOVIES_TEST tem a quantidade de filmes que serão apresentados para que o usuário avalie se gostou ou não. 
+Para os exemplos abaixo eu fiz com que NUM_MOVIES_TEST fosse igual a N, dizendo que gostei de todos os filmes apresentados, para ter um controle maior.
+Os 'NUM_MOVIES_TEST' filmes são escolhidos de forma aleatória e apresentados ao usuário.
+
+
+OBS 2: Por favor, rode no modo interativo, porque não consegui ler o input do usuário de forma diferente, e se rodar o script completo não dá certo.
+
+Para N = 5 e K = 5  -> O resultado não foi muito bom.
+
+
+	Filmes que o usuário gostou:
+		Harry Potter and Deathly Hallows Part 1 (2010) - Aventura
+		Warm Bodies (2013) - Comédia
+		Bourne Supremacy The(2004) - Ação
+		Trainspotting.DVDRip - Ação
+		Alexander(2004) - Ação
+				
+	Filmes recomendados:
+		Madagascar Escape 2 Africa - Infantil
+		Resident Evil - Ficção científica
+		Before the Devil Knows You re Dead - Crime
+		Countess The(2009) - Drama
+		Free Willy - Drama
+		
+Para N = 10 e k = 5 -> O resultado foi bem melhor com 10 filmes para treino.
+
+	Filmes que o usuário gostou:
+		Saw - Terror
+		Twilight Saga Eclipse The - Aventura
+		Paranormal Activity - Terror
+		Capitalism A Love Story - Documentário
+		Count of Monte Cristo The - Aventura
+		High Fidelity - Drama
+		Sukiyaki Western Django - Ação
+		Matrix Reloaded The (2003) - Ficção científica
+		Transformers - Aventura
+		Family Guy - Comédia
+		
+	Filmes recomendados:
+		Loverboy  - Comédia
+		Resident Evil Afterlife (2010) - Ficção científica
+		Before.Sunset.Limited - Comédia romântica
+		Countess The(2009) - Drama
+		Freddy vs. Jason (2003) - Terror
+		
+Para N = 5 e k = 10 - O resultado foi melhor do que com 5 saídas, apesar de ter retornado muitos filmes de drama sendo que o usuário não disse se gosta de filmes de drama.
+
+	Filmes que o usuário gostou:
+		Adventureland - Comédia
+		Hangover Part 2 The (2011) - Comédia
+		Bee Movie - Infantil
+		Ice Age(2002) - Infantil
+		Star Wars Episode II Attack of the Clones - Ficção científica
+		
+	Filmes recomendados:
+		Loverboy (2011) - Comédia
+		Resident Evil Extinction - Ficção científica
+		Before Sunrise - Comédia romântica
+		Countess The(2009) - Drama
+		Free Willy - Drama
+		After Hours - Comédia
+		Cinderella Story A - Comédia
+		Revenant The - Drama
+		Transporter 3 - Ação
+		Inception.TS.IMAGiNE - Ação
+
+Para N = 10 e k = 10 - O resultado não melhorou muito.
+	Filmes que o usuário gostou:
+		Underworld Rise of the Lycans - Ação
+		Indiana Jones and the Temple of Doom - Aventura
+		V for Vendetta - Aventura
+		Alien Resurrection Alien 4  (1997) - Terror
+		Twelve Angry Men - Drama
+		Last Night (2010) - Drama
+		Braveheart - Drama
+		Abandoned The - Terror
+		Br no.TS.SecretMyth Kingdom-Release - Comédia
+		Halo Legends -  Ficção científica
+
+	Filmes recomendados:
+		Lord of the Rings The Two Towers The - Aventura
+		Reservoir Dogs (1992) - Crime
+		Before Sunrise.srt - Comédia romântica
+		Constantine.720p - Terror
+		After Hours - Comédia
+		Freddy s Dead The Final Nightmare (1991) - Terror
+		Chronicles Of Narnia Prince Caspian The - Infantil 
+		Resident Evil Apocalypse - Ação, terror - Ficção científica
+		In the Name of the Father (1993) - Drama
+		Toy Story 2 - Infantil
+
+
+CONSIDERAÇÕES:
+
+	Levando em consideração o gênero do filme, apesar de ser muito relativa essa questão (eu gosto de filmes que são bem produzidos, independente do gênero), a configuração testada que gerou melhores resultados foi quando N = 10 e K = 5.	
+	Rodei cada configuração apenas uma vez, apesar da aleatoriedade.
+	
+	Outro fator que influenciou os resultados foi eu ter aceitado (dito que gostei) todos os filmes que foram recuperados de forma aleatória.
+	Isso "misturou" o conjunto de treino e pode ser o porquê dos resultados mais heterogêneos.
+		
